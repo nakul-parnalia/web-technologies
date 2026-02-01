@@ -1,10 +1,10 @@
 # WEB TECHNOLOGIES
 Task &amp; coursework
 
-## 📖 Introduction
+## Introduction
 This repository documents the comprehensive progression of coursework for the **Web Technologies - Part A & B** modules. It serves as a practical and theoretical archive demonstrating the end-to-end lifecycle of modern web development. The project explores the transformation of the internet from static information repositories to complex, dynamic ecosystems driven by sophisticated server-side logic and secure database interactions. Spanning the entire academic term, this dual-part coursework emphasizes both the foundational architecture of the web and the advanced implementation of full-stack solutions.
 
-## 🛠️ Technological Scope
+## Technological Scope
 The coursework is structured across 10 intensive weeks, bridging the gap between client-side aesthetics and server-side functionality.
 
 ### 1. Frontend Architecture & Multimedia (Part A)
@@ -35,5 +35,5 @@ The final phase addresses the ethical and technical responsibilities of handling
 By combining the static structural focus of Part A with the dynamic, server-driven logic of Part B, this portfolio demonstrates a holistic understanding of the web ecosystem. It showcases the ability to not only build visually appealing interfaces but also to architect secure, scalable, and maintainable web applications ready for real-world deployment.
 
 
-## 🔗 Project Resources
+##  Project Resources
 - **Live Blog:** [WordPress Development Log](https://weeklytasknakul.wordpress.com/)
