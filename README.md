@@ -7,14 +7,14 @@ This repository documents the comprehensive progression of coursework for the **
 ## Technological Scope
 The coursework is structured across 10 intensive weeks, bridging the gap between client-side aesthetics and server-side functionality.
 
-### 1. Frontend Architecture & Multimedia (Part A)
+### 1. Frontend Architecture & Multimedia 
 The foundation of this project lies in **HTML5** and **Semantic Web** principles. Unlike legacy markup, this project emphasizes the use of semantic elements (`<header>`, `<article>`, `<nav>`) to enhance accessibility and SEO.  
 Key implementations include:
 - **Interactive Multimedia**: Native embedding of audio/video assets without third-party plugins.
 - **Responsive Design**: Utilizing **CSS3** and media queries to ensure fluid adaptability across mobile and desktop devices.
 - **Client-Side Interactivity**: Implementing **JavaScript** and **AJAX** for asynchronous data loading and dynamic DOM manipulation, creating a seamless user experience.
 
-### 2. Server-Side Logic & CMS (Part B)
+### 2. Server-Side Logic & CMS 
 Moving beyond static pages, Part B explores the backend technologies that power dynamic applications.
 - **Scripting Languages**: A comparative analysis and practical application of **PHP**, **ASP.NET**, and **JSP** to handle the Request-Response cycle.
 - **Content Management**: An in-depth deployment of **WordPress**, demonstrating how CMS platforms democratize publishing through themes, plugins, and database-driven content organization.
