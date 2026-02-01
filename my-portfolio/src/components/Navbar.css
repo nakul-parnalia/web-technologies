@@ -1,0 +1,209 @@
+/* Define the custom font */
+@font-face {
+  font-family: 'MyJokerFont'; /* You name it here */
+  src: url('./assets/fonts/Blood Victim Zombie.ttf') format('truetype'); /* Path relative to this CSS file */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NavFont';
+  src: url('./assets/fonts/bloodcrowc.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply it to your elements */
+.MyJokerFont {
+  font-family: 'MyJokerFont', sans-serif; /* Use the name you defined above */
+  font-size: 2rem;
+  letter-spacing: 2px; 
+  font-weight: normal;
+}
+
+.NavFont {
+  font-family: 'NavFont', sans-serif; /* Use the name you defined above */
+  font-size: 150px;
+  letter-spacing: 2px; 
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Navnewfont'; /* You name it here */
+  src: url('./assets/fonts/Blood Victim Zombie.ttf') format('truetype'); /* Path relative to this CSS file */
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply it to your elements */
+.Navnewfont {
+  font-family: 'Navnewfont', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 3px;
+  font-weight: normal;
+  text-align: center;
+  display: block;
+  width: 100%;
+
+  background: linear-gradient(to right, #ffffff, #9c4dcc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Spooky shadow */
+}
+
+.navbar-menu li {
+  font-family: 'Navnewfont', sans-serif; /* Apply to ALL menu items */
+font-size: 1.5rem !important; /* Force it */
+    line-height: 1.2; /* Give it room to breathe */
+    display: block;  letter-spacing: 2px;
+  color: #fff; /* Ensure it's visible */
+  transition: color 0.3s ease;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensures it stays on top of other elements (like your cards) */
+  
+  /* Styling to make it look good */
+  background: rgba(44, 0, 62, 0.95); /* Semi-transparent dark purple */
+  backdrop-filter: blur(10px); /* Blurs the content behind it */
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #c084fc;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.logo-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #a855f7, #4c1d95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+/* Menu */
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.navbar-menu li {
+  color: #e5e7eb;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-menu li:hover {
+  color: #c084fc;
+}
+
+.navbar-menu li.active {
+  color: #c084fc;
+}
+
+.navbar-menu li.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background-color: #c084fc;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #c084fc;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-menu {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: linear-gradient(180deg, #120014, #2b0038);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    transform: translateX(100%);
+    transition: transform 0.4s ease;
+  }
+
+  .navbar-menu.open {
+    transform: translateX(0);
+  }
+
+  .navbar-menu li {
+    font-size: 18px;
+  }
+}
+
+/* Hamburger animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}

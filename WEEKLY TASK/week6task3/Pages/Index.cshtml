@@ -1,0 +1,83 @@
+@page
+@model AspNetRegistration.Pages.IndexModel
+@{
+    ViewData["Title"] = "Secure Registration";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Enterprise Registration Portal</h1>
+    <p>Powered by ASP.NET Core Security</p>
+</div>
+
+<div class="container" style="max-width: 400px; margin-top: 50px;">
+    <!-- Step 1: Build Basic HTML Form -->
+    <form id="registerForm" method="post">
+        <!-- Anti-Forgery Token (Unique Strength: Built-in Security) -->
+        @Html.AntiForgeryToken()
+
+        <div class="form-group mb-3">
+            <label>Username</label>
+            <input type="text" id="username" name="username" class="form-control" required />
+            <small id="userError" class="text-danger"></small>
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Email</label>
+            <input type="email" id="email" name="email" class="form-control" required />
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Password</label>
+            <input type="password" id="password" name="password" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Register Securely</button>
+    </form>
+
+    <div id="resultMessage" class="mt-3 alert" style="display:none;"></div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop default reload
+
+            // Step 2: Client-Side Validation (JavaScript)
+            const user = document.getElementById('username').value;
+            if(user.length < 3) {
+                document.getElementById('userError').innerText = "Username must be 3+ chars";
+                return;
+            } else {
+                document.getElementById('userError').innerText = "";
+            }
+
+            // Step 3: Submit Form Without Page Reload (AJAX)
+            const formData = new FormData(this);
+
+            fetch('?handler=Register', { // ASP.NET "Handler" URL
+                method: 'POST',
+                body: formData,
+                headers: {
+                    // Unique Strength: Sending the security token automatically
+                    "RequestVerificationToken": document.querySelector('input[name="__RequestVerificationToken"]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Step 5: Update Page Dynamically
+                const resultDiv = document.getElementById('resultMessage');
+                resultDiv.style.display = 'block';
+                
+                if(data.success) {
+                    resultDiv.className = "mt-3 alert alert-success";
+                    resultDiv.innerText = "Success: " + data.message;
+                    document.getElementById('registerForm').reset();
+                } else {
+                    resultDiv.className = "mt-3 alert alert-danger";
+                    resultDiv.innerText = "Error: " + data.message;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+}

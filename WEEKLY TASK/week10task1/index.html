@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG Mobile eSports - Tournament Schedule</title>
+    <style>
+        /* 1. Reset and Smooth Scroll */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background-color: #0a0e27;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 2. Navigation Bar Styles */
+        nav {
+            background: linear-gradient(135deg, #ff6b35 0%, #e0344a 100%);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 2px 20px rgba(255, 107, 53, 0.3);
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Menu Links */
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 5px;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: block;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .menu a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* 3. Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1a1a2e;
+            min-width: 200px;
+            top: 100%;
+            left: 0;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-top: 5px;
+            overflow: hidden;
+            border: 2px solid #ff6b35;
+        }
+
+        .dropdown-content a {
+            padding: 12px 20px;
+            display: block;
+            border-bottom: 1px solid #333;
+            color: #e0e0e0;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ff6b35;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* 4. Mobile Responsiveness */
+        .toggle-btn {
+            display: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: rgba(255, 107, 53, 0.95);
+                gap: 0;
+                border-radius: 0;
+            }
+
+            .menu.show {
+                display: flex;
+            }
+
+            .menu li {
+                width: 100%;
+            }
+
+            .menu a {
+                padding: 15px 20px;
+                border-radius: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .toggle-btn {
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                background-color: #1a1a2e;
+                box-shadow: none;
+                margin-top: 0;
+            }
+
+            .dropdown.show .dropdown-content {
+                display: block;
+            }
+
+            .dropdown-content a {
+                padding-left: 40px;
+            }
+        }
+
+        /* Page Content Styles */
+        section {
+            min-height: 100vh;
+            padding: 80px 50px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ff6b35;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* Hero Section */
+        section#home {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background-image: 
+                linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(224, 52, 74, 0.1) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%23ff6b35" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            color: #ff6b35;
+            font-size: 72px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 107, 53, 0.5); }
+            50% { text-shadow: 0 0 40px rgba(255, 107, 53, 0.8); }
+        }
+
+        .hero-content p {
+            color: #e0e0e0;
+            font-size: 24px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            background-color: #ff6b35;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn:hover {
+            background-color: #e0344a;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(224, 52, 74, 0.6);
+        }
+
+        /* Schedule Section */
+        #schedule {
+            background-color: #0a0e27;
+        }
+
+        .schedule-table {
+            width: 100%;
+            margin-top: 40px;
+            border-collapse: collapse;
+            background-color: #1a1a2e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.1);
+        }
+
+        .schedule-table th {
+            background: linear-gradient(135deg, #ff6b35 0%, #e0344a 100%);
+            padding: 20px;
+            text-align: left;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .schedule-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #333;
+            color: #e0e0e0;
+        }
+
+        .schedule-table tr:hover {
+            background-color: #16213e;
+            transition: 0.3s ease;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .match-status {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-live {
+            background-color: #ff4444;
+            color: white;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .status-upcoming {
+            background-color: #ff6b35;
+            color: white;
+        }
+
+        .status-completed {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        /* Teams Section */
+        #teams {
+            background: linear-gradient(to bottom, #16213e, #0a0e27);
+        }
+
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.3);
+            border-color: #ff6b35;
+        }
+
+        .team-logo {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+
+        .team-card h3 {
+            color: #ff6b35;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .team-card p {
+            color: #b0b0b0;
+            font-size: 14px;
+        }
+
+        .team-rank {
+            background-color: #ff6b35;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* Prizes Section */
+        #prizes {
+            background-color: #0a0e27;
+        }
+
+        .prizes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .prize-box {
+            background: linear-gradient(135deg, #ff6b35 0%, #e0344a 100%);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            transform: scale(0.95);
+            transition: all 0.3s ease;
+        }
+
+        .prize-box:hover {
+            transform: scale(1.05);
+        }
+
+        .prize-box h3 {
+            color: white;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .prize-box p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+        }
+
+        .prize-amount {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin: 15px 0;
+        }
+
+        /* Registration Section */
+        #registration {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .registration-form {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #0a0e27;
+            padding: 40px;
+            border-radius: 10px;
+            border: 2px solid #ff6b35;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ff6b35;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            font-family: inherit;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0e27;
+            color: #b0b0b0;
+            padding: 40px 30px;
+            text-align: center;
+            border-top: 2px solid #ff6b35;
+        }
+
+        .footer-content p {
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            color: #ff6b35;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 2px solid #ff6b35;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .social-icon:hover {
+            background-color: #ff6b35;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .teams-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .prizes-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 30px;
+            }
+
+            .schedule-table {
+                font-size: 14px;
+            }
+
+            .schedule-table th,
+            .schedule-table td {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="logo">🎮 PUBG Mobile eSports</div>
+        <div class="toggle-btn" onclick="toggleMenu()">☰</div>
+        
+        <ul class="menu" id="navMenu">
+            <li><a href="#home">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="#schedule">Schedule ▾</a>
+                <div class="dropdown-content">
+                    <a href="#schedule">Tournament Schedule</a>
+                    <a href="#schedule">Matches</a>
+                    <a href="#schedule">Results</a>
+                </div>
+            </li>
+
+            <li><a href="#teams">Teams</a></li>
+            <li><a href="#prizes">Prizes</a></li>
+            <li><a href="#registration">Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>🏆 PUBG Mobile World Series</h1>
+            <p>The Ultimate Battle Royale Championship - Compete Against The Best Players Worldwide</p>
+            <button class="cta-btn" onclick="document.getElementById('schedule').scrollIntoView()">View Schedule</button>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule">
+        <h1>Tournament Schedule</h1>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time (UTC)</th>
+                    <th>Team 1 vs Team 2</th>
+                    <th>Prize Pool</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>February 1, 2026</td>
+                    <td>18:00</td>
+                    <td>Phoenix Elite vs Shadow Legends</td>
+                    <td>$50,000</td>
+                    <td><span class="match-status status-upcoming">Upcoming</span></td>
+                </tr>
+                <tr>
+                    <td>February 2, 2026</td>
+                    <td>19:00</td>
+                    <td>Alpha Strikers vs Dragon Force</td>
+                    <td>$50,000</td>
+                    <td><span class="match-status status-upcoming">Upcoming</span></td>
+                </tr>
+                <tr>
+                    <td>February 3, 2026</td>
+                    <td>18:30</td>
+                    <td>Thunder Kings vs Pixel Warriors</td>
+                    <td>$75,000</td>
+                    <td><span class="match-status status-upcoming">Upcoming</span></td>
+                </tr>
+                <tr>
+                    <td>February 4, 2026</td>
+                    <td>20:00</td>
+                    <td>Royal Phantom vs Apex Predators</td>
+                    <td>$100,000</td>
+                    <td><span class="match-status status-live">Live</span></td>
+                </tr>
+                <tr>
+                    <td>February 5, 2026</td>
+                    <td>19:00</td>
+                    <td>Cyber Rogue vs Mythic Dynasty</td>
+                    <td>$75,000</td>
+                    <td><span class="match-status status-upcoming">Upcoming</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Teams Section -->
+    <section id="teams">
+        <h1>Featured Teams</h1>
+        <div class="teams-grid">
+            <div class="team-card">
+                <div class="team-logo">🦅</div>
+                <h3>Phoenix Elite</h3>
+                <p>Reigning Champions - 3x Tournament Winners</p>
+                <div class="team-rank">Rank #1</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-logo">⚡</div>
+                <h3>Alpha Strikers</h3>
+                <p>Rising Stars - New Generation Leaders</p>
+                <div class="team-rank">Rank #2</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-logo">👑</div>
+                <h3>Royal Phantom</h3>
+                <p>Experience & Precision Combined</p>
+                <div class="team-rank">Rank #3</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-logo">🐉</div>
+                <h3>Dragon Force</h3>
+                <p>Aggressive Play Style Masters</p>
+                <div class="team-rank">Rank #4</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-logo">⚔️</div>
+                <h3>Shadow Legends</h3>
+                <p>Strategic Gameplay Specialists</p>
+                <div class="team-rank">Rank #5</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-logo">🌩️</div>
+                <h3>Thunder Kings</h3>
+                <p>Fast-Paced Action Champions</p>
+                <div class="team-rank">Rank #6</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prizes Section -->
+    <section id="prizes">
+        <h1>Prize Distribution</h1>
+        <div class="prizes-container">
+            <div class="prize-box">
+                <h3>1st Place</h3>
+                <div class="prize-amount">$250,000</div>
+                <p>Championship Title + Trophy</p>
+            </div>
+
+            <div class="prize-box">
+                <h3>2nd Place</h3>
+                <div class="prize-amount">$150,000</div>
+                <p>Runner-up Rewards</p>
+            </div>
+
+            <div class="prize-box">
+                <h3>3rd Place</h3>
+                <div class="prize-amount">$100,000</div>
+                <p>Bronze Medal Honours</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration">
+        <h1>Team Registration</h1>
+        <form class="registration-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="teamname">Team Name *</label>
+                <input type="text" id="teamname" name="teamname" required placeholder="Your Team Name">
+            </div>
+
+            <div class="form-group">
+                <label for="leader">Team Leader *</label>
+                <input type="text" id="leader" name="leader" required placeholder="Captain Name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country *</label>
+                <select id="country" name="country" required>
+                    <option value="">Select Country</option>
+                    <option value="usa">United States</option>
+                    <option value="india">India</option>
+                    <option value="china">China</option>
+                    <option value="brazil">Brazil</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="korea">South Korea</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="players">Squad Members (4 Players) *</label>
+                <input type="text" id="players" name="players" required placeholder="Player 1, Player 2, Player 3, Player 4">
+            </div>
+
+            <button type="submit" class="cta-btn">Register Team</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 PUBG Mobile World Series. All rights reserved. | Powered by eSports Global</p>
+            <div class="social-links">
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">Discord</a>
+                <a href="#" class="social-icon">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            if (menu.classList.contains("show")) {
+                menu.classList.remove("show");
+            } else {
+                menu.classList.add("show");
+            }
+        }
+
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('🎮 Team Registration Submitted!\n\nWe will contact you soon with further details.');
+            event.target.reset();
+        }
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('show');
+            });
+        });
+    </script>
+
+</body>
+</html>
+    <style>
+        /* 1. Reset and Smooth Scroll */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 2. Navigation Bar Styles */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        /* Menu Links */
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 5px;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: block;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .menu a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* 3. Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #555;
+            min-width: 180px;
+            top: 100%;
+            left: 0;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            padding: 12px 20px;
+            display: block;
+            border-bottom: 1px solid #666;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #666;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* 4. Mobile Responsiveness */
+        .toggle-btn {
+            display: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: rgba(102, 126, 234, 0.95);
+                gap: 0;
+                border-radius: 0;
+            }
+
+            .menu.show {
+                display: flex;
+            }
+
+            .menu li {
+                width: 100%;
+            }
+
+            .menu a {
+                padding: 15px 20px;
+                border-radius: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .toggle-btn {
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                background-color: #555;
+                box-shadow: none;
+                margin-top: 0;
+            }
+
+            .dropdown.show .dropdown-content {
+                display: block;
+            }
+
+            .dropdown-content a {
+                padding-left: 40px;
+            }
+        }
+
+        /* Page Content Styles */
+        section {
+            min-height: 100vh;
+            padding: 80px 50px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+        }
+
+        section:nth-child(odd) {
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+        }
+
+        section#home {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            color: white;
+            font-size: 64px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: #667eea;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Features Section */
+        #features {
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature h3 {
+            color: #667eea;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        #contact h1 {
+            color: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .contact-info h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 2px solid #667eea;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .social-icon:hover {
+            background-color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="logo">My Website</div>
+        <div class="toggle-btn" onclick="toggleMenu()">☰</div>
+        
+        <ul class="menu" id="navMenu">
+            <!-- Primary Items -->
+            <li><a href="#home">Home</a></li>
+            
+            <!-- Dropdown Submenu -->
+            <li class="dropdown">
+                <a href="#services">Services ▾</a>
+                <div class="dropdown-content">
+                    <a href="#services">Web Design</a>
+                    <a href="#services">SEO Optimization</a>
+                    <a href="#services">Mobile Solutions</a>
+                </div>
+            </li>
+
+            <li><a href="#features">Why Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Content (Anchors for Smooth Scrolling) -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>Welcome to Our Platform</h1>
+            <p>Create amazing digital experiences with our cutting-edge solutions</p>
+            <button class="cta-btn" onclick="document.getElementById('services').scrollIntoView()">Get Started</button>
+        </div>
+    </section>
+
+    <section id="services">
+        <h1>Our Services</h1>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Web Design</h3>
+                <p>Modern, responsive websites that look beautiful on all devices. We create stunning visual experiences that engage your audience.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>SEO Optimization</h3>
+                <p>Boost your online visibility with proven SEO strategies. We help your website rank higher on search engines and drive organic traffic.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Mobile Solutions</h3>
+                <p>Reach customers anywhere with mobile-first design. Our solutions work seamlessly across all devices and screen sizes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <h1>Why Choose Us</h1>
+        <div class="features-list">
+            <div class="feature">
+                <h3>✓ Expert Team</h3>
+                <p>Our team of experienced professionals is dedicated to delivering excellence in every project.</p>
+            </div>
+            <div class="feature">
+                <h3>✓ Fast & Reliable</h3>
+                <p>We deliver projects on time with exceptional quality and performance metrics.</p>
+            </div>
+            <div class="feature">
+                <h3>✓ 24/7 Support</h3>
+                <p>Your success is our priority. We provide continuous support and updates whenever you need them.</p>
+            </div>
+            <div class="feature">
+                <h3>✓ Affordable Pricing</h3>
+                <p>Get premium services at competitive prices. Flexible plans tailored to your budget.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h1>Get In Touch</h1>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p><strong>📧 Email:</strong> info@example.com</p>
+                <p><strong>📞 Phone:</strong> +1 (555) 123-4567</p>
+                <p><strong>📍 Location:</strong> 123 Business St, City, Country</p>
+            </div>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="cta-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 My Website. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            if (menu.classList.contains("show")) {
+                menu.classList.remove("show");
+            } else {
+                menu.classList.add("show");
+            }
+        }
+
+        // Handle contact form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            event.target.reset();
+        }
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('show');
+            });
+        });
+    </script>
+
+</body>
+</html>

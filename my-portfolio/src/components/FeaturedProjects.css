@@ -1,0 +1,287 @@
+/* src/components/FeaturedProjects.css */
+
+/* --- FONTS --- */
+@font-face {
+  font-family: 'FPFont';
+  src: url('./assets/fonts/Blood Victim Zombie.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* --- SECTION STYLING --- */
+.featured-projects-section {
+  position: relative;
+  padding: 3rem 2rem;
+  background-image: url('/assets/FeaturedProjectBG.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #1a002d;
+  box-shadow: inset 0 0 0 2000px rgba(20, 0, 30, 0.9);
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+/* --- SECTION TITLE --- */
+.FPFont {
+  font-family: 'FPFont', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 3px;
+  font-weight: normal;
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #ffffff, #9c4dcc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 5px rgba(156, 77, 204, 0.5));
+}
+
+/* --- GRID LAYOUT --- */
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* --- PROJECT CARD --- */
+.project-card {
+  position: relative;
+  background: #1a002d;
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 100%, 
+    95% 98%, 90% 100%, 85% 98%, 80% 100%, 
+    0% 100%
+  );
+  border: 1px solid #4b0082;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  isolation: isolate; 
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- THE "HAHA" HOVER EFFECT (RED & SUBTLE) --- */
+.project-card::before {
+  content: "HA HA HA HA"; 
+  position: absolute;
+  
+  /* Centering */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-family: 'FPFont', 'Courier New', monospace; 
+  font-size: 3rem; 
+  font-weight: normal; /* CHANGED: Not Bold */
+  line-height: 1.1;
+  text-align: center;
+  white-space: pre-wrap;
+  padding: 2rem;
+  
+  /* Visuals: Red Color & Lower Visibility */
+  opacity: 0; 
+  color: rgba(255, 0, 0, 0.35); /* CHANGED: Red with 35% opacity */
+  text-shadow: none; /* Removed heavy shadow for subtler look */
+  
+  pointer-events: none;
+  z-index: 50; 
+  transition: all 0.4s ease-out;
+  
+  transform: rotate(-20deg) scale(0.9);
+}
+
+/* SHOW "HAHA" ON HOVER */
+.project-card:hover::before {
+  opacity: 1; 
+  transform: rotate(-10deg) scale(1.0);
+}
+
+/* Neon Border Container */
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  box-shadow: inset 0 0 0 2px transparent;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Hover Effects (Card Movement) */
+.project-card:hover {
+  transform: translateY(-8px) rotate(1deg) scale(1.01);
+  background: #240046;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.8),
+    0 0 15px rgba(57, 255, 20, 0.2);
+  z-index: 10;
+}
+
+.project-card:hover::after {
+  box-shadow: inset 0 0 0 2px #39ff14; /* Neon Green Border */
+}
+
+/* --- IMAGE --- */
+.project-image {
+  height: 140px;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 2px solid #9d4edd;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1; 
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: grayscale(80%) contrast(120%);
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.1) rotate(-2deg);
+  filter: grayscale(0%) contrast(100%);
+}
+
+/* --- CONTENT --- */
+.project-content {
+  position: relative;
+  z-index: 1;
+  padding: 1rem 1.2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TITLE: Normal Weight */
+.project-title {
+  font-family: 'FPFont', sans-serif;
+  font-size: 1.6rem;
+  font-weight: normal; 
+  margin: 0 0 0.3rem 0;
+  color: #c06cff;
+  text-shadow: 2px 2px 0px #000;
+  letter-spacing: 1px;
+}
+
+/* DESCRIPTION: Normal Weight */
+.project-description {
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 0.85rem;
+  color: #e0e0e0;
+  margin: 0 0 0.8rem 0;
+  line-height: 1.4;
+  border-left: 3px solid #39ff14;
+  padding-left: 10px;
+  opacity: 0.9;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* TAGS: Normal Weight Monospace */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.tech-tag {
+  background: rgba(20, 0, 30, 0.6);
+  color: #39ff14;
+  border: 1px solid #39ff14;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-family: monospace;
+  font-weight: normal;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+  background: #39ff14;
+  color: #000;
+}
+
+/* --- FLOATING BACKGROUND CARDS --- */
+.floating-cards {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.joker-card {
+  position: absolute;
+  width: 100px;
+  height: 150px;
+  background: linear-gradient(45deg, #6b003e, #2d004b);
+  border-radius: 6px;
+  opacity: 0.15;
+  animation: floatCard 8s ease-in-out infinite;
+  border: 1px solid rgba(157, 78, 221, 0.2);
+}
+
+.joker-card:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.joker-card:nth-child(2) { top: 20%; right: 10%; animation-delay: 1s; }
+.joker-card:nth-child(3) { bottom: 15%; left: 15%; animation-delay: 2s; }
+.joker-card:nth-child(4) { bottom: 25%; right: 20%; animation-delay: 3s; }
+.joker-card:nth-child(5) { top: 40%; left: 30%; animation-delay: 4s; }
+.joker-card:nth-child(6) { top: 50%; right: 30%; animation-delay: 5s; }
+
+@keyframes floatCard {
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  50% { transform: translate(-10px, 10px) rotate(5deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1100px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-projects-section { padding: 2rem 1rem; }
+  .FPFont { font-size: 2rem; }
+  .project-title { font-size: 1.4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card, .joker-card, .project-image img {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

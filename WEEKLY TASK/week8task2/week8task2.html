@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Multimedia Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .media-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: inline-block;
+            margin-top: 20px;
+        }
+        video {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to My Multimedia Page</h1>
+    <p>This page demonstrates how to embed an MP4 video using HTML5.</p>
+
+    <div class="media-container">
+        <h2>My Video Clip</h2>
+        
+        <!-- Embed Video Here -->
+        <video width="640" height="360" controls>
+            <!-- Ensure 'video.mp4' is in the same folder as this HTML file -->
+            <source src="video.mp4" type="video/mp4">
+            
+            <!-- Fallback text for very old browsers -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* --- NEW CHAOTIC JOKER CARD DESIGN --- */
+
+.project-card {
+  position: relative;
+  background: #1a002d; /* Dark Midnight Purple base */
+  border-radius: 4px; /* Slight rounding, mostly sharp */
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+  border: 1px solid #4b0082;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  
+  /* The "Chaotic" Clip Path - subtle jagged edges */
+  clip-path: polygon(
+    0% 0%, 
+    100% 0%, 
+    100% 100%, 
+    95% 98%, 
+    90% 100%, 
+    85% 98%, 
+    80% 100%, 
+    0% 100%
+  );
+}
+
+/* HIDDEN "HAHA" PATTERN OVERLAY */
+.project-card::before {
+  content: "HAHA HAHA HAHA";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 200%;
+  height: 200%;
+  font-family: 'Creepster', cursive; /* Or your custom font */
+  font-size: 2rem;
+  color: rgba(157, 78, 221, 0.05); /* Barely visible ghost text */
+  transform: rotate(-30deg);
+  pointer-events: none;
+  z-index: 0;
+  white-space: wrap;
+  line-height: 1.5;
+}
+
+/* NEON BORDER GLOW ON HOVER */
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 2px transparent;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --- HOVER EFFECTS --- */
+.project-card:hover {
+  transform: translateY(-10px) rotate(2deg) scale(1.02); /* Chaotic tilt */
+  background: #240046; /* Slightly lighter purple */
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.8),
+    0 0 15px rgba(57, 255, 20, 0.3); /* Green radioactive glow */
+  z-index: 10;
+}
+
+.project-card:hover::after {
+  box-shadow: inset 0 0 0 2px #39ff14; /* Neon Green Border appears inside */
+}
+
+/* IMAGE STYLING */
+.project-image {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 2px solid #9d4edd; /* Purple divider */
+  position: relative;
+  z-index: 1;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: grayscale(80%) contrast(120%); /* Gritty look */
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.1) rotate(-2deg);
+  filter: grayscale(0%) contrast(100%); /* Color returns on hover! */
+}
+
+/* TEXT CONTENT */
+.project-content {
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, rgba(26,0,45,0) 0%, rgba(26,0,45,1) 100%);
+}
+
+.project-title {
+  color: #c06cff; /* Neon Purple */
+  font-family: 'AboutMeFont', sans-serif; /* Use your custom font */
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 0px #000;
+}
+
+.project-description {
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+  border-left: 2px solid #39ff14; /* Green accent line */
+  padding-left: 10px;
+}
+
+/* TECH TAGS */
+.tech-tag {
+  background: transparent;
+  color: #39ff14; /* Neon Green text */
+  border: 1px solid #39ff14;
+  font-family: monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 5px rgba(57, 255, 20, 0.2);
+}
+
+.tech-tag:hover {
+  background: #39ff14;
+  color: #000; /* Invert on hover */
+  box-shadow: 0 0 15px #39ff14;
+  transform: translateY(-2px);
+}

@@ -1,0 +1,85 @@
+// src/components/GetInTouch.jsx
+import React, { useEffect } from 'react';
+import './GetInTouch.css';
+
+const GetInTouch = () => {
+  useEffect(() => {
+    // Animate form and text on load
+    const elements = document.querySelectorAll('.animate-in');
+    elements.forEach((el, index) => {
+      el.style.animationDelay = `${index * 0.1}s`;
+      el.classList.add('visible');
+    });
+  }, []);
+
+  return (
+    <section className="get-in-touch-section">
+      {/* Floating Joker Cards */}
+      <div id='getintouch' 
+      className="floating-cards">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="joker-card"></div>
+        ))}
+      </div>
+
+      <div className="contact-container">
+        <h2 className="Getintouchfont">Let's Create Chaos</h2>
+
+        <div className="contact-grid">
+          <div className="contact-info animate-in">
+            <h3>Let's Connect</h3>
+            <p>
+              Have a project in mind or just want to chat? Feel free to reach out.
+              I'm always open to discussing new opportunities and collaborations.
+            </p>
+
+            <div className="contact-details">
+              <div className="contact-item">
+                <span className="icon">✉️</span>
+                <div>
+                  <strong>Email</strong>
+                  <a href="mailto:nakulparnalia18@gmail.com">nakulparnalia18@gmail.com</a>
+                </div>
+              </div>
+              <div className="contact-item">
+                <span className="icon">📞</span>
+                <div>
+                  <strong>Phone</strong>
+                  <a href="tel:+447887172487">+44 7887172487</a>
+                </div>
+              </div>
+              <div className="contact-item">
+                <span className="icon">📍</span>
+                <div>
+                  <strong>Location</strong>
+                  ILFORD, london, UK
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form className="contact-form animate-in" onSubmit={(e) => e.preventDefault()}>
+            <div className="form-group">
+              <input type="text" placeholder="Your Name" required />
+            </div>
+            <div className="form-group">
+              <input type="email" placeholder="Your Email" required />
+            </div>
+            <div className="form-group">
+              <input type="text" placeholder="Subject" required />
+            </div>
+            <div className="form-group">
+              <textarea placeholder="Your Message" rows="5" maxLength="500" required></textarea>
+              <div className="char-count">0/500 characters</div>
+            </div>
+            <button type="submit" className="send-button">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default GetInTouch;

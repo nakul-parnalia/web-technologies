@@ -1,0 +1,368 @@
+/* src/components/GetInTouch.css */
+
+/* --- 1. FONTS --- */
+@font-face {
+  font-family: 'Getintouchfont';
+  src: url('./assets/fonts/Blood Victim Zombie.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* --- 2. SECTION LAYOUT (COMPACT) --- */
+.get-in-touch-section {
+  position: relative;
+  padding: 2rem 1.5rem; 
+  background-image: url('/assets/GetInTouchBG.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #1a002d;
+  box-shadow: inset 0 0 0 2000px rgba(20, 0, 40, 0.85);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* --- 3. THEMED TITLE --- */
+.Getintouchfont {
+  font-family: 'Getintouchfont', sans-serif;
+  font-size: 3rem; 
+  letter-spacing: 4px;
+  font-weight: normal; 
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem; 
+  background: linear-gradient(to right, #ffffff, #9c4dcc, #00cc66);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 5px rgba(156, 77, 204, 0.8));
+}
+
+/* --- 4. FLOATING CARDS --- */
+.floating-cards {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.joker-card {
+  position: absolute;
+  width: 100px; height: 160px;
+  background: linear-gradient(135deg, #4b0082, #000);
+  border: 1px solid #9c4dcc;
+  border-radius: 6px;
+  opacity: 0.15;
+  animation: floatCard 10s ease-in-out infinite;
+}
+
+.joker-card:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.joker-card:nth-child(2) { top: 20%; right: 10%; animation-delay: 2s; }
+.joker-card:nth-child(3) { bottom: 15%; left: 15%; animation-delay: 4s; }
+.joker-card:nth-child(4) { bottom: 25%; right: 20%; animation-delay: 1s; }
+.joker-card:nth-child(5) { top: 50%; left: 40%; animation-delay: 3s; }
+.joker-card:nth-child(6) { top: 80%; right: 40%; animation-delay: 5s; }
+
+@keyframes floatCard {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-20px, 20px) rotate(10deg); }
+}
+
+/* --- 5. MAIN CONTAINER --- */
+.contact-container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* --- 6. INFO SECTION (THEMED DOSSIER) --- */
+.contact-info {
+  background: rgba(26, 0, 45, 0.8); /* Dark Purple */
+  padding: 2rem;
+  position: relative;
+  
+  /* Torn Edge Effect */
+  clip-path: polygon(
+    0% 0%, 100% 2%, 100% 100%, 
+    95% 98%, 90% 100%, 5% 98%, 0% 100%
+  );
+  
+  border-left: 4px solid #00cc66; /* Neon Green Stripe */
+  border-top: 1px solid rgba(156, 77, 204, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  
+  /* Slight Chaotic Tilt */
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+}
+
+.contact-info:hover {
+  transform: rotate(0deg) scale(1.01); /* Straighten on hover */
+  border-left-color: #9c4dcc; /* Color shift */
+}
+
+/* "CLASSIFIED" STAMP */
+.contact-info::after {
+  content: "CLASSIFIED";
+  position: absolute;
+  top: 10px; right: 20px;
+  font-family: 'Getintouchfont', cursive;
+  font-size: 1.5rem;
+  color: rgba(255, 0, 0, 0.15); /* Faint Red Stamp */
+  transform: rotate(15deg);
+  pointer-events: none;
+  border: 2px solid rgba(255, 0, 0, 0.15);
+  padding: 0.2rem 0.5rem;
+}
+
+.contact-info h3 {
+  font-family: 'Getintouchfont', sans-serif; 
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #c06cff; /* Neon Purple */
+  font-weight: normal;
+  text-shadow: 2px 2px 0px #000;
+  letter-spacing: 2px;
+}
+
+.contact-info p {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  color: #d1d1d1;
+  font-size: 1rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  padding-left: 1rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  background: rgba(0, 204, 102, 0.1); /* Green Tint */
+  border-color: #00cc66;
+  transform: translateX(5px);
+}
+
+.icon {
+  font-size: 1.4rem;
+  background: #1a002d;
+  width: 45px; height: 45px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  color: #00cc66;
+  border: 2px solid #9c4dcc;
+  box-shadow: 0 0 10px rgba(156, 77, 204, 0.2);
+}
+
+.contact-item strong {
+  display: block;
+  font-size: 0.8rem;
+  color: #9c4dcc; /* Purple Label */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.2rem;
+}
+
+.contact-item a, 
+.contact-item div {
+  color: #fff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-item a:hover {
+  color: #00cc66;
+  text-shadow: 0 0 8px rgba(0, 204, 102, 0.6);
+}
+
+/* --- 7. CHAOTIC FORM DESIGN --- */
+.contact-form {
+  position: relative;
+  background: #1a002d;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: rotate(2deg);
+  transition: transform 0.4s ease;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 95% 98%, 90% 100%, 85% 98%, 80% 100%, 5% 98%, 0% 100%);
+  border: 1px solid rgba(156, 77, 204, 0.3);
+}
+
+.contact-form:hover, 
+.contact-form:focus-within {
+  transform: rotate(0deg) scale(1.01);
+  border-color: #00cc66;
+  box-shadow: 0 15px 40px rgba(0, 204, 102, 0.2);
+}
+
+.contact-form::before {
+  content: "WHY SO SERIOUS?";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-family: 'Getintouchfont', sans-serif;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* --- 8. CRAZY JOKER HINT (SMALL FONT) --- */
+.input-container {
+  position: relative;
+}
+
+.joker-hint {
+  position: absolute;
+  top: -25px;
+  left: 10px;
+  background: transparent; 
+  color: #00cc66; 
+  font-family: 'Getintouchfont', cursive;
+  font-size: 1rem; /* Small font */
+  font-weight: normal;
+  padding: 0;
+  border: none;
+  text-shadow: 0 0 10px rgba(0, 204, 102, 0.8), 2px 2px 0px #000;
+  opacity: 0;
+  transform: translateY(15px) rotate(-10deg) scale(0.8);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 20;
+}
+
+/* Show on Hover/Focus */
+.input-container input:hover + .joker-hint,
+.input-container input:focus + .joker-hint,
+.input-container textarea:hover ~ .joker-hint,
+.input-container textarea:focus ~ .joker-hint {
+  opacity: 1;
+  transform: translateY(0px) rotate(-5deg) scale(1);
+}
+
+/* Varied rotation for odd items */
+.input-container:nth-child(odd) input:hover + .joker-hint,
+.input-container:nth-child(odd) input:focus + .joker-hint,
+.input-container:nth-child(odd) textarea:hover ~ .joker-hint,
+.input-container:nth-child(odd) textarea:focus ~ .joker-hint {
+  transform: translateY(0px) rotate(5deg) scale(1);
+}
+
+/* --- 9. INPUT FIELDS --- */
+.form-group { margin-bottom: 1.2rem; }
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #4b0082;
+  border-radius: 4px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  background: rgba(0, 0, 0, 0.5);
+  border-color: #00cc66;
+  box-shadow: 0 0 15px rgba(0, 204, 102, 0.4);
+  transform: translateX(5px);
+}
+
+.char-count {
+  font-size: 0.75rem;
+  text-align: right;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+/* --- 10. SEND BUTTON (REFINED) --- */
+.send-button {
+  width: 100%;
+  padding: 0.8rem; /* Small & Compact */
+  background: transparent;
+  color: #fff;
+  border: 2px solid #9c4dcc; /* Purple Border */
+  border-radius: 8px; 
+  font-family: 'Getintouchfont', cursive;
+  font-size: 1.2rem; 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(156, 77, 204, 0.2);
+}
+
+/* HOVER STATE */
+.send-button:hover {
+  background: #00cc66; /* Green Fill */
+  color: #1a002d; /* Dark Text */
+  border-color: #00cc66;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 204, 102, 0.5); /* Subtle Glow */
+}
+
+/* CLICK STATE */
+.send-button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* --- 11. ANIMATIONS --- */
+.animate-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 12. RESPONSIVE --- */
+@media (max-width: 900px) {
+  .get-in-touch-section { padding-top: 4rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-form { transform: rotate(0deg); padding: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .Getintouchfont { font-size: 2rem; }
+  .contact-info { padding: 1.2rem; }
+}

@@ -1,0 +1,32 @@
+1. Two Key Security Measures Against Common Threats
+To protect a website from threats like SQL Injection (SQLi) and Cross-Site Scripting (XSS), implementing these two measures is essential:
+
+Input Validation and Sanitization: This is the first line of defense.
+
+Validation ensures that the data entered by users matches the expected format (e.g., ensuring an "age" field only contains numbers, or an email field contains an @ symbol).
+​
+
+Sanitization cleans the input by removing potential code or scripts before processing it. For example, stripping out <script> tags prevents XSS attacks where hackers try to run malicious JavaScript on other users' browsers.
+​
+
+Web Application Firewall (WAF): A WAF acts as a shield between your website and the internet. It inspects incoming traffic and automatically blocks malicious requests—such as those containing SQL injection patterns or botnet attacks—before they even reach your website's server.
+
+2. The Importance of Updates
+Keeping software up to date is arguably the single most effective security practice.
+
+Why it matters: Hackers constantly search for holes (vulnerabilities) in popular software like WordPress, themes, and plugins. Developers release updates specifically to patch these holes.
+
+The Risk: If you run an outdated version, you are leaving a "known door" open that hackers already know how to walk through. Updating closes these doors.
+
+3. Recommended Security Plugin: Wordfence Security
+Plugin: Wordfence Security.
+
+Purpose: Wordfence is a comprehensive "all-in-one" security solution designed specifically for WordPress.
+
+How it protects you:
+
+Endpoint Firewall: It includes a WAF that runs directly on your server to block malicious traffic.
+
+Malware Scanner: It regularly scans your website files to check for "backdoors" or malicious code that might have been injected.
+
+Live Traffic Monitoring: It allows you to see real-time login attempts and block IP addresses that are trying to brute-force (guess) your passwords.

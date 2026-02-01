@@ -1,0 +1,66 @@
+I have reviewed the content from the W3Schools pages on HTML Multimedia. Here is a summary of the key concepts and tools for embedding diverse multimedia content into a website, based on those resources.
+
+1. Key HTML Multimedia Tags
+Modern HTML5 provides dedicated tags to embed media directly without needing plugins (like Flash, which is obsolete).
+
+<video>: Used to embed video files (like movie clips or game highlights).
+
+Controls: Adding the controls attribute gives the user play/pause buttons, volume, and a seek bar.
+
+Source: You use <source> tags inside it to provide different file formats. The browser picks the first one it supports.
+
+Best Format: MP4 is the recommended format because it is supported by all major browsers (Chrome, Edge, Safari, Firefox).
+
+Example:
+
+xml
+<video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+<audio>: Used to embed sound files (like music, podcasts, or sound effects).
+
+Works very similarly to the video tag.
+
+Best Format: MP3 is the standard choice for music and audio because of its balance between quality and file size, and universal support.
+
+Example:
+
+xml
+<audio controls>
+  <source src="horse.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<iframe>: Used to embed content from another website, such as a YouTube video, a Google Map, or a Spotify player.
+
+This effectively opens a "window" to another site inside your page.
+
+Example (YouTube):
+
+xml
+<iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+2. Supported File Formats
+The browser can only play specific formats. If you use the wrong one (like .avi or .wmv), it won't play natively on the web page.
+
+Media Type	Recommended (Universal)	Alternative (Open Source)	Avoid (Not Supported)
+Video	MP4 (.mp4)	WebM (.webm), Ogg (.ogg)	AVI, WMV, MOV, Flash
+Audio	MP3 (.mp3)	WAV (.wav), Ogg (.ogg)	WMA, MIDI, AAC (partial)
+3. How to "Familiarise" Yourself (Practice Task)
+To solidify this knowledge, try creating a simple "Media Gallery" page on your computer (or WAMP server):
+
+Find Files: Locate an .mp4 video (short clip) and an .mp3 song on your computer.
+
+Code: Create a file named media.html.
+
+Embed:
+
+Add a <video> tag for your MP4 file.
+
+Add an <audio> tag for your MP3 file.
+
+Add an <iframe> tag for a YouTube video (use the "Embed" code from any YouTube video).
+
+Test: Open media.html in Chrome/Edge and see if you can play all three.
+
+This covers the core concepts of embedding multimedia as presented in the W3Schools documentation.

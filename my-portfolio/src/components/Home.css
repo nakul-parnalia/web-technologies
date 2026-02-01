@@ -1,0 +1,272 @@
+/* src/components/Home.css */
+
+/* --- 1. IMPORT FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Permanent+Marker&display=swap');
+
+/* --- 2. GLOBAL RESET & BODY --- */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('/assets/HomeBG.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #120024;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; }
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  padding-top: 8rem; 
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- 3. FLOATING ANIMATED CARDS --- */
+.floating-card-wrapper {
+  position: absolute;
+  width: 150px;
+  height: 240px;
+  z-index: 1; 
+  opacity: 0.8; 
+  pointer-events: none;
+}
+
+.draggable-card {
+  width: 100%; height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+/* Card Animations */
+.card-left-pos {
+  top: 10%; left: 5%;
+  animation: floatLeft 12s ease-in-out infinite;
+}
+
+@keyframes floatLeft {
+  0% { transform: translate(0, 0) rotate(-15deg); }
+  33% { transform: translate(20px, 100px) rotate(0deg); } 
+  66% { transform: translate(-30px, 200px) rotate(-10deg); } 
+  100% { transform: translate(0, 0) rotate(-15deg); } 
+}
+
+.card-right-pos {
+  top: 15%; right: 5%;
+  animation: floatRight 14s ease-in-out infinite;
+}
+
+@keyframes floatRight {
+  0% { transform: translate(0, 0) rotate(15deg); }
+  40% { transform: translate(-40px, 150px) rotate(5deg); } 
+  70% { transform: translate(20px, 300px) rotate(20deg); } 
+  100% { transform: translate(0, 0) rotate(15deg); } 
+}
+
+.card-bottom-pos {
+  bottom: 5%; left: 20%;
+  animation: floatBottom 16s ease-in-out infinite;
+}
+
+@keyframes floatBottom {
+  0% { transform: translate(0, 0) rotate(5deg); }
+  50% { transform: translate(300px, -30px) rotate(-5deg); } 
+  100% { transform: translate(0, 0) rotate(5deg); } 
+}
+
+/* --- 4. PROFILE CONTENT --- */
+.profile-content {
+  text-align: center;
+  max-width: 800px;
+  z-index: 10; 
+  position: relative;
+  padding: 2rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.avatar-wrapper { 
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.avatar {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00cc66;
+  box-shadow: 
+    0 0 20px #9c4dcc,
+    inset 0 0 20px #9c4dcc,
+    0 0 0 5px rgba(0,0,0,0.5); 
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.avatar:hover {
+  transform: scale(1.1) rotate(-5deg);
+  border-color: #9c4dcc;
+  box-shadow: 0 0 30px #00cc66, inset 0 0 20px #00cc66;
+}
+
+/* --- TYPOGRAPHY --- */
+.name {
+  font-family: 'Creepster', cursive;
+  font-size: 5rem;
+  font-weight: 400;
+  margin: 0.5rem 0;
+  color: #fff;
+  letter-spacing: 4px;
+  text-shadow: 
+    3px 3px 0px #9c4dcc, 
+    -2px -2px 0px #00cc66,
+    0 0 20px rgba(0,0,0,0.8);
+  animation: textGlitch 5s infinite alternate;
+}
+
+@keyframes textGlitch {
+  0% { text-shadow: 3px 3px 0px #9c4dcc, -2px -2px 0px #00cc66; }
+  98% { text-shadow: 3px 3px 0px #9c4dcc, -2px -2px 0px #00cc66; }
+  99% { text-shadow: -3px 3px 0px #00cc66, 2px -2px 0px #9c4dcc; transform: translate(2px, 0); }
+  100% { text-shadow: 3px 3px 0px #9c4dcc, -2px -2px 0px #00cc66; transform: translate(0, 0); }
+}
+
+/* --- TITLE --- */
+.title {
+  font-family: 'Algerian', 'Stencil', 'Impact', fantasy, sans-serif;
+  font-weight: normal; 
+  font-size: 2.8rem; 
+  margin: 0.5rem 0 2rem;
+  color: #ffffff; 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transform: none;
+  display: block; 
+  width: 100%;
+  text-align: center;
+  text-shadow: 0 0 12px rgba(0, 204, 102, 0.6);
+  animation: none;
+}
+
+/* --- TAGLINE --- */
+.tagline {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold; 
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  border-left: none;
+  padding-left: 0;
+  background: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+}
+
+/* --- BUTTONS --- */
+.button-group {
+  display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;
+}
+
+.btn {
+  font-family: 'Permanent Marker', cursive;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  transition: all 0.2s ease;
+  border-radius: 4px; 
+}
+
+/* UPDATED PRIMARY BUTTON: Transparent Background */
+.btn-primary {
+  background-color: rgba(0,0,0,0.5); /* Matching secondary transparency */
+  color: #00ff80; /* Retaining Green Text */
+  border: 2px solid #00ff80; /* Retaining Green Border */
+  
+  /* Matching shadow style but green */
+  box-shadow: 5px 5px 0px rgba(0, 255, 128, 0.3); 
+}
+
+.btn-primary:hover {
+  transform: translate(-2px, -2px);
+  /* On hover, fill with green for effect */
+  background-color: #00ff80;
+  color: #000;
+  box-shadow: 7px 7px 0px #fff;
+  border-color: #fff;
+  animation: shake 0.3s ease-in-out;
+}
+
+/* SECONDARY BUTTON */
+.btn-secondary {
+  background-color: rgba(0,0,0,0.5); 
+  color: #fff;
+  border: 2px solid #9c4dcc;
+  box-shadow: 5px 5px 0px rgba(156, 77, 204, 0.4);
+}
+
+.btn-secondary:hover {
+  background-color: #9c4dcc;
+  color: #000;
+  box-shadow: 5px 5px 0px #fff;
+  transform: translate(-2px, -2px);
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  25% { transform: translate(-1px, -2px) rotate(-1deg); }
+  50% { transform: translate(-3px, 0px) rotate(1deg); }
+  75% { transform: translate(3px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -1px) rotate(0deg); }
+}
+
+/* --- SOCIAL ICONS --- */
+.social-icons {
+  display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; font-size: 2rem;
+}
+
+.social-icons a { 
+  color: #ccc; 
+  text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.social-icons a:hover {
+  color: #00cc66; 
+  transform: scale(1.4) rotate(15deg);
+  text-shadow: 0 0 15px #00cc66;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .home-container { padding-top: 7rem; padding-bottom: 2rem; }
+  .profile-content { padding: 0; width: 90%; }
+  .name { font-size: 3.5rem; }
+  .title { font-size: 2rem; }
+  .tagline { font-size: 1rem; }
+  .avatar { width: 130px; height: 130px; }
+  .btn { width: 100%; text-align: center; }
+  
+  .card-left-pos { top: 15%; left: -20px; }
+  .card-right-pos { top: 18%; right: -20px; }
+  .card-bottom-pos { bottom: 2%; opacity: 0.5; } 
+}

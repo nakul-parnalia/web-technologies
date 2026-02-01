@@ -1,0 +1,124 @@
+/* src/components/Footer.css */
+
+/* --- KEEP YOUR FONTS & CONTAINER STYLES FROM BEFORE --- */
+@font-face {
+  font-family: 'FooterFont';
+  src: url('./assets/fonts/Blood Victim Zombie.ttf') format('truetype');
+  font-weight: bold; 
+  font-style: bold;
+}
+
+.cyberpunk-footer {
+  position: relative;
+  background-color: #0d001a;
+  padding: 3rem 2rem 1.5rem;
+  color: #fff;
+  font-family: 'Segoe UI', monospace;
+  overflow: hidden;
+  border-top: 1px solid rgba(156, 77, 204, 0.2);
+  z-index: 100;
+  clip-path: polygon(0 10px, 20px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.footer-line {
+  position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+  background: linear-gradient(90deg, #9c4dcc, #00cc66, #9c4dcc);
+  box-shadow: 0 0 10px #9c4dcc;
+  animation: neonPulse 3s infinite linear;
+}
+
+.footer-content {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 2rem;
+  z-index: 2; position: relative;
+}
+
+/* --- BRAND SECTION --- */
+.footer-brand { flex: 1; min-width: 250px; }
+.FooterFont { font-family: 'FooterFont', cursive; font-size: 2.5rem; color: #9c4dcc; margin: 0; text-shadow: 2px 2px 0 #000; }
+.system-status { font-family: monospace; font-size: 0.9rem; color: #666; margin-top: 5px; }
+.status-live { color: #00cc66; font-weight: bold; animation: blink 1.5s infinite; }
+
+/* --- NEW SOCIAL BUTTONS DESIGN --- */
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.social-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px; /* Fixed width for uniformity */
+  padding: 0.5rem 0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #444;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.btn-text {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #aaa;
+  z-index: 2;
+  transition: color 0.3s ease;
+  letter-spacing: 1px;
+}
+
+/* Hover Background Effect */
+.hover-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #00cc66; /* Default Green */
+  transform: translateY(100%); /* Hidden initially */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+/* --- HOVER STATES PER BRAND --- */
+/* GitHub: Purple */
+.social-btn.github:hover { border-color: #9c4dcc; box-shadow: 0 0 10px #9c4dcc; }
+.social-btn.github:hover .hover-bg { background: #9c4dcc; transform: translateY(0); }
+
+/* LinkedIn: Blue */
+.social-btn.linkedin:hover { border-color: #0077b5; box-shadow: 0 0 10px #0077b5; }
+.social-btn.linkedin:hover .hover-bg { background: #0077b5; transform: translateY(0); }
+
+/* Twitter: Cyan */
+.social-btn.twitter:hover { border-color: #1da1f2; box-shadow: 0 0 10px #1da1f2; }
+.social-btn.twitter:hover .hover-bg { background: #1da1f2; transform: translateY(0); }
+
+/* Email: Green */
+.social-btn.email:hover { border-color: #00cc66; box-shadow: 0 0 10px #00cc66; }
+.social-btn.email:hover .hover-bg { background: #00cc66; transform: translateY(0); }
+
+/* Text Color Change on Hover */
+.social-btn:hover .btn-text { color: #000; text-shadow: none; font-weight: 800; }
+
+
+/* --- LEGAL SECTION --- */
+.footer-legal { text-align: right; flex: 1; min-width: 250px; }
+.copyright-text { font-size: 0.8rem; color: #e0e0e0; margin-bottom: 0.2rem; }
+.legal-disclaimer { font-size: 0.75rem; color: #666; }
+.highlight-name { color: #9c4dcc; }
+.glitch-text { color: #00cc66; cursor: help; }
+.glitch-text:hover { animation: textGlitch 0.3s infinite; }
+
+/* --- ANIMATIONS --- */
+@keyframes neonPulse { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes textGlitch { 0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 100% { transform: translate(0); } }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .footer-content { flex-direction: column; text-align: center; }
+  .footer-legal { text-align: center; margin-top: 1rem; }
+  .footer-socials { flex-wrap: wrap; justify-content: center; }
+}
