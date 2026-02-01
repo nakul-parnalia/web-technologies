@@ -1,4 +1,4 @@
-# Web Technologies Portfolio 
+# WEB TECHNOLOGIES
 Task &amp; coursework
 
 ## 📖 Introduction
